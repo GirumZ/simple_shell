@@ -20,11 +20,7 @@ void eof_handler(void);
 void sigint_handler(int signal);
 
 
-#define MAIN_H
-
-#include <stdio.h>
-#include <stdlib.h>
-
+/* helper functions */
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *str_concat(char *s1, char *s2);
