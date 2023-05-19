@@ -35,7 +35,7 @@ char *take_command(void)
 		write(1, "\n", 1);
 		exit(0);
 	}
-	if (strcmp(line, "\n") == 0)
+	if (_strcmp(line, "\n") == 0)
 	{
 		free(line);
 		shell_loop();
