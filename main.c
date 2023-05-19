@@ -3,7 +3,7 @@
 /**
  * main - entry point
  * @av: vector of arguments
- * @ac: vector arguments
+ * @ac: number of arguments
  *
  * Return: 0 on success
  */
