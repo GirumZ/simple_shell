@@ -11,6 +11,12 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 
+typedef struct node
+{
+	char *dir;
+	struct node *next;
+} list_t;
+
 extern char **environ;
 
 char **tokenizer(char *string, char *delim);
@@ -18,6 +24,9 @@ char *take_command(void);
 void shell_loop(void);
 void eof_handler(void);
 void sigint_handler(int signal);
+char *_getenv(char *var_name);
+char *_which(char *cmd);
+list_t *path_list(void);
 
 
 /* helper functions */
