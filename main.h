@@ -10,7 +10,13 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
+/**
+ * struct node - struct
+ * @dir: directory
+ * @next: pointer
+ */
 typedef struct node
 {
 	char *dir;
@@ -25,14 +31,18 @@ void shell_loop(void);
 void eof_handler(void);
 void sigint_handler(int signal);
 char *_getenv(char *var_name);
-char *_which(char *cmd);
+char *true_path(char *cmd);
 list_t *path_list(void);
-
+list_t *add_node_end(list_t **head, const char *str);
+void execute(char **array);
+int cmd_handl(char **array);
+void free_list(list_t *head);
+size_t print_list(const list_t *h);
 
 /* helper functions */
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *str_concat(char *s1, char *s2);
 char *_strdup(char *str);
-
+int _strncmp(char *s1, char *s2, size_t n);
 #endif /* MAIN_H */

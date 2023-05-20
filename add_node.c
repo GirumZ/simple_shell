@@ -8,11 +8,6 @@
  * Return: new list
  *
  */
-typedef struct list_s
-{
-	char *dir;
-	struct list_s *next;
-} list_t;
 
 list_t *add_node_end(list_t **head, const char *str)
 {
