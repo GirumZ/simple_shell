@@ -8,9 +8,9 @@
  */
 void signal_handler(int signal)
 {
-	(void) signal;
-	write(1, "\n$ ", 3);
-	kill(getpid(), SIGCONT);
+        (void) signal;
+        write(1, "\n$ ", 3);
+        kill(getpid(), SIGCONT);
 }
 
 /**
@@ -21,24 +21,24 @@ void signal_handler(int signal)
  */
 char *take_command(void)
 {
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t true_read;
+        char *line = NULL;
+        size_t len = 0;
+        ssize_t true_read;
 
-	signal(SIGINT, signal_handler);
+        signal(SIGINT, signal_handler);
 
-	true_read = getline(&line, &len, stdin);
+        true_read = getline(&line, &len, stdin);
 
-	if (true_read == -1)
-	{
-		free(line);
-		write(1, "\n", 1);
-		exit(0);
-	}
-	if (_strcmp(line, "\n") == 0)
-	{
-		free(line);
-		shell_loop();
-	}
-	return (line);
+        if (true_read == -1)
+        {
+                free(line);
+                write(1, "\n", 1);
+                exit(0);
+        }
+        if (_strcmp(line, "\n") == 0)
+        {
+                free(line);
+                shell_loop();
+        }
+        return (line);
 }
