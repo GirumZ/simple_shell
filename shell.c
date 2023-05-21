@@ -6,20 +6,26 @@
  */
 void shell_loop(void)
 {
-	char *command;
-	char **array;
+        char *command;
+        char **array;
+        int cmd_result;
 
-	while (1)
-	{
-		write(1, "$ ", 2);
 
-		command = take_command();
+        while (1)
+        {
+                write(1, "$ ", 2);
 
-		array = tokenizer(command, " \n\0");
+                command = take_command();
 
-		cmd_handl(array);
+                array = tokenizer(command, " \n\0");
 
-		free(command);
+                cmd_result = cmd_handl(array);
 
-	}
+
+                free(command);
+                free(array);
+
+                if (cmd_result == 1)
+                        break;
+        }
 }
