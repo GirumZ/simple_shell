@@ -22,7 +22,7 @@ typedef struct node
 	char *dir;
 	struct node *next;
 } list_t;
-
+void print_environment(void);
 extern char **environ;
 
 char **tokenizer(char *string, char *delim);
