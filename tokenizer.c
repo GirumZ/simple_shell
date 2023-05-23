@@ -3,35 +3,46 @@
 /**
  * tokenizer - tokenizes a string and save them in an array
  * @string: string to be tokenized
- * @delim: the delimeter
- *
  * Return: created array
  *
  */
-char **tokenizer(char *string, char *delim)
+char **tokenizer(char *string)
 {
-        char *token;
-        size_t i, size = 0;
-        char **tokens;
+	char *str1 = NULL, *str2 = NULL, *token = NULL, *delim = " :\t\r\n";
+	char **tokens = NULL;
+	int size = 1, sign = 0, i;
 
-        for (i = 0 ; string[i] != '\0' ; i++)
-        {
-                if (string[i] == delim[0])
-                        size++;
-        }
-        token = strtok(string, delim);
+	str1 = _strdup(string);
+	if (str1 == NULL)
+		return (NULL);
+	str2 = str1;
 
-        tokens = malloc(sizeof(char *) * (size + 2));
-        if (tokens == NULL)
-        {
-                perror("Error");
-                exit(1);
-        }
-        for (i = 0 ; token != NULL ; i++)
-        {
-                tokens[i] = token;
-                token = strtok(NULL, delim);
-        }
-        tokens[i] = NULL;
-        return (tokens);
+	while (*str2)
+	{
+		if (_strchr(delim, *str2) != NULL && sign == 0)
+		{
+			size++;
+			sign = 1;
+		}
+		else if (_strchr(delim, *str2) == NULL && sign == 1)
+			sign = 0;
+		str2++;
+	}
+
+	tokens = malloc(sizeof(char *) * (size + 1));
+	token = strtok(str1, delim);
+
+	for (i = 0; token != NULL ; i++)
+	{
+		tokens[i] = _strdup(token);
+		if (tokens[i] == NULL)
+		{
+			free(tokens);
+			return (NULL);
+		}
+		token = strtok(NULL, delim);
+	}
+	tokens[i] = '\0';
+	free(str1);
+	return (tokens);
 }
