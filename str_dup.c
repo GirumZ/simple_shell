@@ -7,24 +7,24 @@
  */
 char *_strdup(char *str)
 {
-        unsigned int i, count;
-        char *p;
+	unsigned int i, count;
+	char *p;
 
-        if (str == NULL)
-                return (NULL);
+	if (str == NULL)
+		return (NULL);
 
-        for (count = 0; str[count] != '\0'; count++)
-                ;
+	for (count = 0; str[count] != '\0'; count++)
+		;
 
-        p = malloc((count + 1) * sizeof(char));
-        if (p == NULL)
-        {
-                perror("Error: malloc failed");
-                return (NULL);
-        }
+	p = malloc((count + 1) * sizeof(char));
+	if (p == NULL)
+	{
+		perror("Error: malloc failed");
+		return (NULL);
+	}
 
-        for (i = 0; i <= count; i++)
-                p[i] = str[i];
+	for (i = 0; i <= count; i++)
+		p[i] = str[i];
 
-        return (p);
+	return (p);
 }
