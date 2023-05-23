@@ -12,32 +12,19 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-/**
- * struct node - struct
- * @dir: directory
- * @next: pointer
- */
-typedef struct node
-{
-	char *dir;
-	struct node *next;
-} list_t;
-void print_environment(void);
+
+
 extern char **environ;
 
-char **tokenizer(char *string, char *delim);
+char **tokenizer(char *string);
 char *take_command(void);
 void shell_loop(void);
-void eof_handler(void);
 void sigint_handler(int signal);
 char *_getenv(char *var_name);
 char *true_path(char *cmd);
-list_t *path_list(void);
-list_t *add_node_end(list_t **head, const char *str);
-void execute(char **array);
-int cmd_handl(char **array);
-void free_list(list_t *head);
-size_t print_list(const list_t *h);
+void execute(char *cmd, char **array);
+int cmd_handle(char **array);
+
 
 /* helper functions */
 int _strlen(char *s);
@@ -45,4 +32,8 @@ int _strcmp(char *s1, char *s2);
 char *str_concat(char *s1, char *s2);
 char *_strdup(char *str);
 int _strncmp(char *s1, char *s2, size_t n);
+char *_strchr(char *str, char c);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+
 #endif /* MAIN_H */
