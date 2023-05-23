@@ -10,6 +10,8 @@ int cmd_handle(char **array)
 	struct stat st;
 	char *full_cmd;
 
+	if (for_builtin(array) == 0)
+		return (0);
 	if (stat(array[0], &st) == 0 && access(array[0], X_OK) == 0)
 	{
 		execute(array[0], array);

@@ -23,7 +23,7 @@ char *true_path(char *cmd)
 		_strcat(full_path, cmd);
 		if (full_path[size - 1] == '\n')
 			full_path[size - 1] = '\0';
-		
+
 		if (access(full_path, X_OK) == 0)
 		{
 			free(paths);
