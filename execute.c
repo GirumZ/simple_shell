@@ -8,8 +8,9 @@
 
 void execute(char **array)
 {
+	char **env = environ;
 	pid_t child_pid;
-	int ex_status, status;
+	int status;
 
 	child_pid = fork();
 	if (child_pid == -1)
@@ -19,13 +20,15 @@ void execute(char **array)
 	}
 	if (child_pid == 0)
 	{
-		ex_status = execve(array[0], array, environ);
-		if (ex_status == -1)
+		if (execve(array[0], array, env) == -1)
 		{
 			perror(array[0]);
-			exit(1);
 		}
 	}
-	wait(&status);
+	else
+	{
+		wait(&status);
+		free(array);
+	}
 
 }

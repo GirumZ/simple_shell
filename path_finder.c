@@ -25,11 +25,16 @@ char *true_path(char *cmd)
 		strcpy(full_path, paths[i]);
 		strcat(full_path, "/");
 		strcat(full_path, cmd);
-		full_path[size - 1] = '\0';
+		if (full_path[size - 1] != '\n')
+			full_path[size - 1] = '\0';
 
 		if (access(full_path, X_OK) == 0)
+		{
+			free(paths);
 			return (full_path);
-		free(full_path);
+		}
+		free(full_path);	
 	}
+	free(paths);
 	return (NULL);
 }

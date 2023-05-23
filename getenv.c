@@ -8,12 +8,14 @@
 char *_getenv(char *var_name)
 {
 	char *value = NULL;
+	char **env = environ;
 	int i, n = _strlen(var_name);
 
-	for (i = 0 ; environ[i] != NULL ; i++)
+	for (i = 0 ; env[i] != NULL ; i++)
 	{
-		if (_strncmp(var_name, environ[i], n) == 0)
-			value = environ[i] + n + 1;
+		if (_strncmp(var_name, env[i], n) == 0)
+			value = env[i] + n + 1;
 	}
+	env = environ;
 	return (value);
 }

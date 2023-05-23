@@ -40,5 +40,7 @@ char *take_command(void)
 		free(line);
 		shell_loop();
 	}
+	if (line[true_read] == '\n')
+		line[true_read] = '\0';
 	return (line);
 }

@@ -19,10 +19,13 @@ int cmd_handl(char **array)
 	full_cmd = true_path(array[0]);
 	if (full_cmd != NULL)
 	{
-		array[0] = full_cmd;
+		memcpy(array[0], full_cmd,strlen(full_cmd) + 1);
+		free(full_cmd);
 		execute(array);
 		return (0);
 	}
+	printf("%s\n", array[0]);
 	perror(array[0]);
-	return (1);
+	free(array);
+	return (0);
 }
