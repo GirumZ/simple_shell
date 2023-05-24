@@ -2,9 +2,9 @@
 
 /**
  * shell_loop - enters into a loop
- *
+ * @av: vector of arguments for main function
  */
-void shell_loop(void)
+void shell_loop(char **av)
 {
 	char *command;
 	char **array;
@@ -14,7 +14,7 @@ void shell_loop(void)
 		if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
 			write(STDOUT_FILENO, "$ ", 2);
 
-		command = take_command();
+		command = take_command(av);
 
 		array = tokenizer(command);
 
@@ -24,7 +24,7 @@ void shell_loop(void)
 			continue;
 		}
 
-		if (cmd_handle(array) == 0)
+		if (cmd_handle(array, av) == 0)
 			continue;
 	}
 }
