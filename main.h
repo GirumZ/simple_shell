@@ -17,13 +17,13 @@
 extern char **environ;
 
 char **tokenizer(char *string);
-char *take_command(void);
-void shell_loop(void);
+char *take_command(char **av);
+void shell_loop(char **av);
 void sigint_handler(int signal);
 char *_getenv(char *var_name);
 char *true_path(char *cmd);
 void execute(char *cmd, char **array);
-int cmd_handle(char **array);
+int cmd_handle(char **array, char **av);
 void exit_shell(char **array);
 void _env(char **array);
 int for_builtin(char **array);

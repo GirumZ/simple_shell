@@ -14,10 +14,11 @@ void signal_handler(int signal)
 
 /**
  * take_command - takes a command from the user
+ * @av: vector of arguments for main function
  * Return: the command read
  */
 
-char *take_command(void)
+char *take_command(char **av)
 {
 	char *line = NULL;
 	size_t len = 0;
@@ -36,7 +37,7 @@ char *take_command(void)
 	if (_strcmp(line, "\n") == 0)
 	{
 		free(line);
-		shell_loop();
+		shell_loop(av);
 	}
 	if (line[true_read] == '\n')
 		line[true_read] = '\0';
