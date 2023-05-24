@@ -14,14 +14,14 @@ void execute(char *cmd, char **array)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		perror("Error");
-		exit(1);
+		perror("Error: ");
+		exit(EXIT_FAILURE);
 	}
 	if (child_pid == 0)
 	{
 		if (execve(cmd, array, env) == -1)
 			perror(cmd);
-		exit(98);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
