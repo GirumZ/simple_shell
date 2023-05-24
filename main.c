@@ -10,8 +10,7 @@
 int main(int ac, char *av[])
 {
 	(void) ac;
-	(void) av;
 
-	shell_loop();
+	shell_loop(av);
 	return (0);
 }
