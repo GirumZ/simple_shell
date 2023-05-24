@@ -7,5 +7,5 @@
 void exit_shell(char **array)
 {
 	iterate_free(array);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
