@@ -1,5 +1,9 @@
 #include "main.h"
-
+/**
+ * for_builtin - checks for built in command and select function
+ * @array: array of command
+ * Return: 0 on success and 1 in failure
+ */
 
 int for_builtin(char **array)
 {
@@ -16,5 +20,4 @@ int for_builtin(char **array)
 		return (0);
 	}
 	return (1);
-}	
-
+}

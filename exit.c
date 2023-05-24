@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _exit - exits the shell
+ * exit_shell - exits the shell
  * @array: array of command and arguments
  */
 

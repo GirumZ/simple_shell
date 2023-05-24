@@ -1,6 +1,7 @@
 #include "main.h"
 /**
  * _env - prints the environment variable
+ * @array: array of command
  * Reeturn: void
  */
 
