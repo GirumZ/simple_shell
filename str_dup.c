@@ -16,7 +16,7 @@ char *_strdup(char *str)
 	for (count = 0; str[count] != '\0'; count++)
 		;
 
-	p = malloc((count + 1) * sizeof(char));
+	p = malloc((count + 2) * sizeof(char));
 	if (p == NULL)
 	{
 		perror("Error: malloc failed");

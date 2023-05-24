@@ -6,6 +6,6 @@
 
 void exit_shell(char **array)
 {
-	free(array);
+	iterate_free(array);
 	exit(0);
 }

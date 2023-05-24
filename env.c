@@ -15,6 +15,6 @@ void _env(char **array)
 	for (i = 0 ; env[i] != NULL ; i++)
 	{
 		write(1, env[i], _strlen(env[i]));
-		write(1, "\n", 1);
+		write(STDOUT_FILENo, "\n", 1);
 	}
 }

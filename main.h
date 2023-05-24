@@ -37,6 +37,6 @@ int _strncmp(char *s1, char *s2, size_t n);
 char *_strchr(char *str, char c);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
-
+void iterate_free(char **array);
 
 #endif /* MAIN_H */

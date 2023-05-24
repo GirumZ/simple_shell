@@ -10,7 +10,7 @@ char **tokenizer(char *string)
 {
 	char *str1 = NULL, *str2 = NULL, *token = NULL, *delim = " :\t\r\n";
 	char **tokens = NULL;
-	int size = 1, sign = 0, i;
+	int size = 1, sign = 0, i = 0;
 
 	str1 = _strdup(string);
 	if (str1 == NULL)
@@ -44,5 +44,6 @@ char **tokenizer(char *string)
 	}
 	tokens[i] = '\0';
 	free(str1);
+	free(string);
 	return (tokens);
 }

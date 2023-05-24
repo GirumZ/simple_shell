@@ -21,10 +21,10 @@ void execute(char *cmd, char **array)
 	{
 		if (execve(cmd, array, env) == -1)
 			perror(cmd);
+		exit(98);
 	}
 	else
 	{
 		wait(&status);
-		free(array);
 	}
 }

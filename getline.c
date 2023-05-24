@@ -8,7 +8,7 @@
 void signal_handler(int signal)
 {
 	(void) signal;
-	write(1, "\n$ ", 3);
+	write(STDOUT_FILENO, "\n$ ", 3);
 	kill(getpid(), SIGCONT);
 }
 
@@ -30,7 +30,7 @@ char *take_command(void)
 	{
 		free(line);
 		if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
-			write(1, "\n", 1);
+			write(STDOUT_FILENO, "\n", 1);
 		exit(0);
 	}
 	if (_strcmp(line, "\n") == 0)
