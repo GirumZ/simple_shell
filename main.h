@@ -27,6 +27,11 @@ int cmd_handle(char **array);
 void exit_shell(char **array);
 void _env(char **array);
 int for_builtin(char **array);
+int mysetenv(int argc, char **argv);
+int myunsetenv(int argc, char **argv);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
+int builtin_cd(int argc, char **argv);
 
 /* helper functions */
 int _strlen(char *s);
