@@ -11,10 +11,11 @@ void shell_loop(void)
 
 	while (1)
 	{
-		write(1, "$ ", 2);
+		if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
+			write(1, "$ ", 2);
 
 		command = take_command();
-
+		
 		array = tokenizer(command);
 
 		if (cmd_handle(array) == 0)

@@ -29,7 +29,8 @@ char *take_command(void)
 	if (true_read == -1)
 	{
 		free(line);
-		write(1, "\n", 1);
+		if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
+			write(1, "\n", 1);
 		exit(0);
 	}
 	if (_strcmp(line, "\n") == 0)
